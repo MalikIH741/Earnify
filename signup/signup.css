@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-image: url('/images/pngtree-blue-business-finance-earning-banner-image_173585\ \(1\).jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  right: 400px;
+  background-color: transparent;
+  height: 500px;
+ 
+}
+
+h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  background-color: transparent;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+input:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.toggle-form {
+  margin-top: 20px;
+  color: #fff;
+}
+
+.toggle-form a {
+  color: #007bff;
+  text-decoration: none;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earnings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+        <!-- Menu icon -->
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <!-- Site logo -->
+        <label class="logo">Earnify</label>
+        <!-- Navigation links -->
+        <ul>
+          <li><a href="/Html/index.html">Home</a></li>
+          <li><a class="active" href="/earnings/index.html">Earnings</a></li>
+          <li><a href="/signup/signup.html">Sign-Up</a></li>
+        </ul>
+      </nav>
+  <section class="earnings">
+    <h1 style="color: #007bff;">Earnings</h1>
+    <div class="earnings-container">
+      <div class="earnings-info">
+        <h2 style="color: #007bff;">Current Balance: $<span id="balance">0</span></h2>
+        <p>Earned from:</p>
+        <ul>
+          <li>Invite Friends: $<span id="invite-friends">0</span></li>
+          <li>Test Apps: $<span id="test-apps">0</span></li>
+          <li>Complete Surveys: $<span id="complete-surveys">0</span></li>
+        </ul>
+      </div>
+      <div class="withdrawal-info">
+        <h2 style="color: #007bff;">Withdrawal Information</h2> 
+        <p>Minimum withdrawal amount: $200</p>
+        <p>Withdrawal fee: 5%</p>
+        <button id="withdraw-button" onclick="cash()">Withdraw Cash</button>
+      </div>
+    </div>
+  </section>
+  <footer>
+    &copy; <p>All Rights Reserved.</p>
+  </footer>
+  <script>
+  function survey() {
+  window.location.href = "/survey/index1.html"
+}
+function apps() {
+  // Open a random useless app
+  let appWindow = window.open("https://www.random.org/", "_blank");
+  // Set a timeout to simulate the user closing the app
+  setTimeout(() => {
+    // Check if the user has closed the app
+    if (confirm("Have you closed the app?")) {
+      addEarnings(50);
+      alert("Congratulations! $50 have been added to your account successfully.");
+    }
+  }, 5000);
+}
+
+// Update the earnings information
+let balance = localStorage.getItem("earnings") || 0;
+document.getElementById("balance").textContent = Math.floor(balance);
+
+// Update the earnings from each source
+let inviteFriends = localStorage.getItem("invite-friends") || 0;
+document.getElementById("invite-friends").textContent = Math.floor(inviteFriends);
+
+let testApps = localStorage.getItem("test-apps") || 0;
+document.getElementById("test-apps").textContent = Math.floor(testApps);
+
+let completeSurveys = localStorage.getItem("complete-surveys") || 0;
+document.getElementById("complete-surveys").textContent = Math.floor(completeSurveys);
+
+// Add event listener to the earn-methods
+document.querySelectorAll(".earn-method").forEach((method, index) => {
+  method.addEventListener("click", () => {
+    switch (index) {
+      case 0:
+        balance += 10;
+        inviteFriends += 10;
+        break;
+      case 1:
+        balance += 50;
+        testApps += 50;
+        break;
+      case 2:
+        balance += 0.2;
+        completeSurveys += 0.2;
+        break;
+    }
+    localStorage.setItem("earnings", balance);
+    localStorage.setItem("invite-friends", inviteFriends);
+    localStorage.setItem("test-apps", testApps);
+    localStorage.setItem("complete-surveys", completeSurveys);
+    document.getElementById("earnings").textContent = `Earnings: $${Math.floor(balance)}`;
+  });
+});
+
+// Add event listener to the withdrawal button
+document.getElementById("withdraw-button").addEventListener("click", withdrawCash);
+function withdrawCash() {
+  // Check if the balance is sufficient for withdrawal
+  if (balance >= 200) {
+    // Calculate the withdrawal amount
+    let withdrawalAmount = Math.floor(balance * 0.95); // 5% withdrawal fee
+
+    // Update the balance
+    balance -= withdrawalAmount;
+    localStorage.setItem("earnings", balance);
+
+    // Display a confirmation message
+    alert(`Withdrawal successful! Your new balance is $${Math.floor(balance)}.`);
+    document.getElementById("balance").textContent = Math.floor(balance);
+  } else {
+    alert("Insufficient balance for withdrawal. Minimum withdrawal amount is $200.");
+  }
+}
+function cash() {
+  window.location.href = "/withdrawal/index.html  "
+}
+// Add event listeners for the modal buttons
+document.getElementById("copy-link-btn").addEventListener("click", function() {
+  copyLink();
+});
+
+document.getElementById("close-modal-btn").addEventListener("click", function() {
+  closeModal();
+});
+
+// Function to show the modal
+function showInviteModal() {
+  document.getElementById("invite-modal").style.display = "block";
+}
+
+// Function to copy the link
+function copyLink() {
+  const linkInput = document.getElementById("invite-link");
+  navigator.clipboard.writeText(linkInput.value);
+  closeModal();
+  // Add $10 to the earnings
+  addEarnings(10);
+  alert("Congratulations! Link copied to clipboard and $10 have been added to your account successfully.");
+}
+
+// Function to close the modal
+function closeModal() {
+  document.getElementById("invite-modal").style.display = "none";
+}
+// Function to add earnings
+function addEarnings(amount) {
+  let balance = localStorage.getItem("earnings") || 0;
+  balance = Math.floor(parseFloat(balance) + amount);
+  localStorage.setItem("earnings", balance);
+  document.getElementById("earnings").textContent = `Earnings: $${Math.floor(balance)}`;
+}
+  </script>
+</body>
+</html>

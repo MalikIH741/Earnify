@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Account Details</h2>
+        <form id="accountForm">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
+            <div class="input-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="input-group">
+                <label for="gmail">Gmail ID:</label>
+                <input type="email" id="gmail" name="gmail" required>
+            </div>
+            <div class="payment-group">
+                <label>Payment Method:</label>
+                <div class="payment-option">
+                    <input type="radio" id="easypaisa" name="paymentMethod" value="Easypaisa" required>
+                    <label for="easypaisa">Easypaisa</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="jazzcash" name="paymentMethod" value="JazzCash" required>
+                    <label for="jazzcash">JazzCash</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="account">Account Number:</label>
+                <input type="text" id="account" name="account" required>
+            </div>
+            <button type="submit">Submit</button>
+            <div id="success-message-container" class="message-container"></div> <!-- Success message container -->
+            <p id="error-message"></p>
+        </form>
+    </div>
+    <script>
+  document.getElementById('accountForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const surname = document.getElementById('surname').value;
+    const dob = document.getElementById('dob').value;
+    const gmail = document.getElementById('gmail').value;
+    const account = document.getElementById('account').value;
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+    const errorMessage = document.getElementById('error-message');
+    const successMessageContainer = document.getElementById('success-message-container');
+
+    if (!paymentMethod) {
+        errorMessage.textContent = 'Please select a payment method.';
+        successMessageContainer.textContent = ''; // Clear any previous success message
+        return;
+    }
+
+    if (account === '') {
+        errorMessage.textContent = 'Account number cannot be empty.';
+        successMessageContainer.textContent = ''; // Clear any previous success message
+        return;
+    }
+
+    errorMessage.textContent = '';
+    successMessageContainer.innerHTML = '<p class="success-message">Account details submitted successfully! You will receive your cash when you have $200.</p>';
+
+    // Add a 3-second delay before redirecting to the main page
+    setTimeout(function() {
+        window.location.href = '/Html/index.html';
+    }, 3000);
+});
+    </script>
+</body>
+</html>

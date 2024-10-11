@@ -1,0 +1,168 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+form {
+  max-width: 600px;
+  margin-top: 330px;
+  margin-left: 320px;
+  padding: 1rem;    
+  background-color: transparent;
+  border-radius: 8px;
+  height: 200px;
+  box-shadow: 0 0 10px rgb(73, 73, 73);
+}
+
+.question {
+  color: #007BFF;
+  font-size: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 30px  ;
+  height: 50px;
+}
+
+button {
+  background-color: #0082e6;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+
+button:hover {
+  background-color: #1b9bff;
+}
+
+
+button[type="button"] {
+  margin-top: 1rem;
+}
+
+
+ /* #message {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-decoration: none; 
+  background-color: #b7e6c2;
+  border: 1px solid #1d8334;
+  border-radius: 8px;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+#next-survey-btn a{
+  background-color: #2fac4c;
+  color: white;
+}
+
+#next-survey-btn a:hover {
+  background-color: #218838;
+  
+} */
+
+
+.message-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.message-container p {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.message-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.message-container button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#next-survey-btn {
+  background-color: #0082e6; 
+  border: none; 
+  color: white; 
+  padding: 10px 20px; 
+  text-align: center;
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 10px 0; 
+  cursor: pointer;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease; 
+  width: 150px;
+}
+
+
+#next-survey-btn:hover {
+  background-color: #1b9bff; 
+}
+
+
+#next-survey-btn a {
+  color: white;
+  text-decoration: none; 
+}
+
+
+@media (max-width: 600px) {
+  form {
+      padding: 0.5rem;
+  }
+
+  button {
+      width: 100%;
+      margin-top: 0.5rem;
+  }
+}
